@@ -1,113 +1,73 @@
 import java.util.Scanner;
 
-public class MiniProjeto2 {
+public class JogoAgentesSecretos {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Introdução
-        System.out.println("---CAPITULO I---");
-        System.out.println("---Hotel em Monaco---");
-        System.out.println("Seja bem vindo à CIA!");
-        System.out.println("Preste atenção, essa é a sua missão:");
-        System.out.println("Você deve se infiltrar no Hotel MonteCarlo, esse hotel esta sobre nossas investigações, se estivermos certos, este hotel é usado para lavagem de dinheiro da maior organização criminosa do Pacifico Norte ");
-        
-        System.out.print("Escolha o gênero do agente (M/F): ");
+        // Introdução e escolha do personagem
+        System.out.println("Bem-vindo ao mundo dos agentes secretos!");
+        System.out.println("Escolha seu personagem:");
+        System.out.println("1. Agente Alpha");
+        System.out.println("2. Agente Bravo");
+        System.out.print("Digite o número correspondente ao personagem: ");
+        int escolhaPersonagem = scanner.nextInt();
+        scanner.nextLine(); // Consumir a quebra de linha
 
-        int energia = 10;
+        // Nome do jogador
+        System.out.print("Por favor, digite seu nome: ");
+        String nome = scanner.nextLine();
 
-        System.out.print("Me informe seu codinome: ");
-        String nomeAgente = scanner.nextLine();
+        // Introdução à história
+        System.out.println("\nOlá, Agente " + nome + "!");
+        System.out.println("Você foi recrutado para uma missão secreta...");
 
-        // Fase 1
-        System.out.println("\n--- Fase 1: Infiltração ---");
-        System.out.println("O agente " + nomeAgente + " está em uma missão secreta.");
+        // Energia do jogador
+        int energia = 100;
 
-        // Escolhas da Fase 1
-        System.out.println("Escolha o que fazer a seguir:");
-        System.out.println("1. Entrar no prédio pela porta principal.");
-        System.out.println("2. Invadir pela entrada dos fundos.");
+        // Escolha inicial
+        System.out.println("\nVocê está diante de uma porta com três botões numerados: 1, 2 e 3.");
+        System.out.println("Qual botão você escolhe pressionar?");
+        System.out.println("1. Botão 1");
+        System.out.println("2. Botão 2");
+        System.out.println("3. Botão 3");
+        int escolhaInicial = scanner.nextInt();
 
-        int escolhaFase1 = scanner.nextInt();
-
-        if (escolhaFase1 == 1) {
-            System.out.println("Entrando pela porta principal, você passa despercebido.");
-            // Exibição de energia
-            energia -= 0;
-            System.out.println("Energia restante: " + energia);
-        } else if (escolhaFase1 == 2) {
-            System.out.println("Entrando pelos fundos, você encontra e evita as câmeras.");
-            // Exibição de energia
-            energia -= 3;
-            System.out.println("Energia restante: " + energia);
-        } else {
-            System.out.println("Escolha inválida. O agente " + nomeAgente + " permanece em espera.");
+        // Segunda escolha
+        switch (escolhaInicial) {
+            case 1:
+                escolhaBotao1();
+                energia -= 20; // Exemplo de perda de energia
+                break;
+            case 2:
+                escolhaBotao2();
+                break;
+            case 3:
+                escolhaBotao3();
+                break;
+            default:
+                System.out.println("Escolha inválida! Você falhou em seguir as instruções. Missão terminada!");
         }
 
-        // Fase 2
-        System.out.println("\n--- Fase 2: O inimigo ---");
-        System.out.println("O agente " + nomeAgente + " se depara com um agente inimigo.");
-
-        // Escolhas da Fase 2
-        System.out.println("Escolha o que fazer a seguir:");
-        System.out.println("1. Eliminar o inimigo em uma luta.");
-        System.out.println("2. Despistar o inimigo.");
-
-        int escolhaFase2 = scanner.nextInt();
-
-        if (escolhaFase2 == 1) {
-            System.out.println("Envolvendo-se na luta, o agente " + nomeAgente + " vence o inimigo.");
-            // Exibição de energia
-            energia -= 3;
-            System.out.println("Energia restante: " + energia);
-        } else if (escolhaFase2 == 2) {
-            System.out.println("Desviando-se habilmente, o agente " + nomeAgente + " continua a missão.");
-            // Exibição de energia
-            energia -= 0;
-            System.out.println("Energia restante: " + energia);
-        } else {
-            System.out.println("Escolha inválida. O agente " + nomeAgente + " permanece em alerta.");
+        // Verificar se a energia chegou a zero
+        if (energia <= 0) {
+            System.out.println("Sua energia chegou a zero. Game over!");
         }
+    }
 
-        // Fase 3
-        System.out.println("\n--- Fase 3: A fuga ---");
-        System.out.println("O agente " + nomeAgente + " precisa escapar do local.");
+    public static void escolhaBotao1() {
+        System.out.println("\nVocê pressionou o Botão 1 e uma armadilha é acionada.");
+        System.out.println("Você foi capturado pelos inimigos. Fim de jogo!");
+    }
 
-        // Escolhas da Fase 3
-        System.out.println("Escolha o que fazer a seguir:");
-        System.out.println("1. Pedir apoio aéreo para uma extração rápida e segura.");
-        System.out.println("2. Tentar escapar a pé pela rota de fuga arriscada.");
+    public static void escolhaBotao2() {
+        System.out.println("\nVocê pressionou o Botão 2 e uma escotilha se abre, revelando um túnel.");
+        System.out.println("Você entra no túnel e continua sua missão. Parabéns, Agente!");
+    }
 
-        int escolhaFase3 = scanner.nextInt();
-
-        if (escolhaFase3 == 1) {
-            System.out.println("A extração aérea chega a tempo, o agente " + nomeAgente + " escapa com sucesso.");
-            // Exibição de energia
-            energia -= 2;
-            System.out.println("Energia restante: " + energia);
-        } else if (escolhaFase3 == 2) {
-            System.out.println("Correndo pela rota arriscada, o agente " + nomeAgente + " escapa, mas perde energia.");
-            // Exibição de energia
-            energia -= 4;
-            System.out.println("Energia restante: " + energia);
-        } else {
-            System.out.println("Escolha inválida. O agente " + nomeAgente + " continua escondido.");
-        }
-
-        // Exibição de energia final
-        System.out.println("\nMissão concluída!");
-
-        // Finais diferentes com base na energia restante
-        if (energia >= 5) {
-            System.out.println("Parabéns, Agente " + nomeAgente + "! Você concluiu a missão com sucesso e está pronto para a próxima!");
-        } else if (energia >= 1) {
-            System.out.println("Você concluiu a missão, Agente " + nomeAgente + ", mas ficou um pouco exausto. Recarregue e esteja preparado para a próxima missão.");
-        } else if (energia == 0) {
-            System.out.println(" Voce ficou sem eneria, a missão foi uma falha.");
-        }
-
-        // Fechamento
-        System.out.println("\nObrigado por jogar, Agente " + nomeAgente + ". Até a próxima missão!");
-        scanner.close();
+    public static void escolhaBotao3() {
+        System.out.println("\nVocê pressionou o Botão 3 e uma voz computadorizada pede uma senha.");
+        System.out.println("Você digita uma senha e a porta se abre, revelando o objetivo da missão.");
+        System.out.println("Missão cumprida, Agente! Você é um herói.");
     }
 }
